@@ -3,13 +3,13 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Abstra
 
 
 class MyAccountManager(BaseUserManager):
-    def create_user(self, email, username, password=None):
+    def create_user(self,  username, email, password=None):
         if not username:
             raise ValueError('Users must have a username')
 
         user = self.model(
-            email=self.normalize_email(email),
             username=username,
+            email=self.normalize_email(email),
         )
 
         user.set_password(password)
@@ -32,11 +32,8 @@ class MyAccountManager(BaseUserManager):
 class Account(AbstractUser):
 
     # this parts are mine !
-    is_mainboard = models.BooleanField(default=False)
-    
-    
+    is_mainboard = models.BooleanField(default=True)
     objects = MyAccountManager()
 
     def __str__(self):
         return self.username
-   
