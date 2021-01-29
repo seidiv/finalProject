@@ -27,3 +27,4 @@ class SensorValueSerializer(serializers.ModelSerializer):
     class Meta:
         model = SensorValue
         fields = '__all__'
+        depth = 0
