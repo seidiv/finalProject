@@ -3,15 +3,20 @@ import { connect } from 'react-redux';
 import {setSearchField} from '../../store/actions/search';
 import mainboards from '../../store/reducers/mainboards';
 
+let objectList = [];
+
 class SearchBox extends Component {
 
+  componentDidMount(){
+    objectList = this.props.objectList;
+  }
   render() {
       return (
         <div className='pa2 '>
           <input
             className='tc pa3 ba b--green bg-lightest-blue'
             type='search'
-            placeholder='search mainboards'
+            placeholder='search by description'
             onChange={this.props.onSearchChange}
           />
         </div>
@@ -19,10 +24,8 @@ class SearchBox extends Component {
   }
 }
 
-let mainboardsList=[];
 
 const mapStateToProps = state => {
-  mainboardsList = state.mainboards.mainboards;
   return {
     searchField: state.searchField ,
   }
@@ -30,7 +33,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSearchChange: (event) => dispatch(setSearchField(event.target.value,mainboardsList))
+    onSearchChange: (event) => dispatch(setSearchField(event.target.value,objectList))
   }
 }
 

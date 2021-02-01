@@ -4,7 +4,7 @@ class Scroll extends Component {
     render() {
         return (
             <div>
-                <div style={{margin: 'auto', overflow: 'scroll', border: '5px solid black', height: '800px' , width:'1450px'}}>
+                <div style={{margin: 'auto', overflow: 'scroll', border: '5px solid black', height: '782px' }}>
                     {this.props.children}
                 </div>
             </div>

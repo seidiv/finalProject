@@ -12,13 +12,13 @@ export const searchObjects = (state=initialState,action={}) => {
             const filteredObjectsAct = objects.filter(obj =>{
                 return obj.description.toLowerCase().includes(text.toLowerCase());
             });
-            console.log(filteredObjectsAct);
+            // console.log(filteredObjectsAct);
             return {...state,searchField:text , filteredObjects:filteredObjectsAct};
     
         default:
             const initObjects = action.objects;
-            console.log("this is init objects");
-            console.log(initObjects);
+            // console.log("this is init objects");
+            // console.log(initObjects);
             return {...state,filteredObjects:initObjects};
     }
 } 

@@ -1,6 +1,22 @@
 export const GET_MAINBOARDS_LIST = "GET_MAINBOARDS_LIST";
+
+export const GET_RELATED_SENSORS = "GET_RELATED_SENSORS";
+
+export const GET_SENSOR_TYPES = "GET_SENSOR_TYPES";
 export const GET_ERRORS = "GET_ERRORS";
+
 export const CREATE_MESSAGE = "CREATE_MESSAGE";
+
 export const GET_MESSAGE = "GET_MESSAGE";
 
-export const CHANGE_SEARCH_FIELD = 'CHANGE_SEARCH_FIELD';
+export const CHANGE_SEARCH_FIELD = "CHANGE_SEARCH_FIELD";
+
+export const USER_LOADING = "USER_LOADING";
+
+export const USER_LOADED = "USER_LOADED";
+
+export const AUTH_ERROR = "AUTH_ERROR";
+
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+
+export const LOGIN_FAIL = "LOGIN_FAIL";

@@ -28,7 +28,7 @@ class PutSensorValue(generics.ListCreateAPIView):
 
 
 class RegisterMainboardAPI(generics.GenericAPIView):
-    permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
     serializer_class = MainBoardSerializer
 
     def post(self, request, *args, **kwargs):
@@ -56,7 +56,7 @@ class RegisterSensorType(generics.ListCreateAPIView):
     serializer_class = SensorTypeSerializer
 
 
-class SensorTypeDetail(generics.RetrieveUpdateDestroyAPIView):
+class SensorTypeList(generics.ListAPIView):
     # permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
     queryset = SensorType.objects.all()
     serializer_class = SensorTypeSerializer

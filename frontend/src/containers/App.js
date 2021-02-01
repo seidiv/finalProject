@@ -1,49 +1,65 @@
-import React, { Component , Fragment } from 'react';
-import {connect} from 'react-redux';
-import {setSearchField} from '../store/actions/search';
-import Header from '../components/layout/Header';
-import Alerts from '../components/layout/Alerts';
-import SearchBox from '../components/layout/SearchBox';
-import MainboardList from '../components/mainboards/MainboardList';
-import Scroll from '../components/mainboards/scroll';
-import {  Provider as AlertProvider } from 'react-alert'
-import AlertTemplate from 'react-alert-template-basic'
-import './App.css';
-import {Provider} from 'react-redux';
-import store from '../store/store';
-
-
+import React, { Component, Fragment } from "react";
+import Header from "../components/layout/Header";
+import Alerts from "../components/layout/Alerts";
+import MainboardList from "../components/mainboards/MainboardList";
+import { Provider as AlertProvider } from "react-alert";
+import {
+    HashRouter as Router,
+    Route,
+    Switch,
+    Redirect,
+} from "react-router-dom";
+import AlertTemplate from "react-alert-template-basic";
+import "./App.css";
+import { Provider } from "react-redux";
+import store from "../store/store";
+import PrivateRoute from "../components/common/PrivateRoute";
+import Login from "../components/accounts/Login";
+import RegisterMainboard from "../components/accounts/RegisterMainboard";
+import { loadUser } from "../store/actions/auth";
+import SensorList from "../components/sensors/SensorList";
 // Alert options
 const alertOptions = {
-  timeout : 3000 , 
-  position : 'top center' 
-}
+    timeout: 3000,
+    position: "top center",
+};
 class App extends Component {
+    componentDidMount() {
+        store.dispatch(loadUser());
+    }
 
-  // componentDidMount() {
-  //   fetch('http://localhost:8000/api/sensors/list')
-  //     .then(response=> response.json())
-  //     .then(users => console.log(users));
-  // }
-
-  render() {
-    return (
-      <Provider store={store}>
-        <AlertProvider template={AlertTemplate}  {...alertOptions}>
-          
-          <div className='tc'>
-            
-            <Header/>
-            <Alerts/> 
-            <SearchBox/>
-            <MainboardList/>
-
-
-          </div>
-        </AlertProvider>
-      </Provider>
-    );
-  }
+    render() {
+        return (
+            <Provider store={store}>
+                <AlertProvider template={AlertTemplate} {...alertOptions}>
+                    <Router>
+                        <div className="tc">
+                            <Header />
+                            <Alerts />
+                            <Switch>
+                                <Route
+                                    exact
+                                    path="/"
+                                    component={MainboardList}
+                                />
+                                <Route
+                                    exact
+                                    path="/register"
+                                    component={RegisterMainboard}
+                                />
+                                <Route exact path="/login" component={Login} />
+                                <Route
+                                    exact
+                                    path="/sensors"
+                                    component={SensorList}
+                                />
+                            </Switch>
+                        </div>
+                    </Router>
+                </AlertProvider>
+            </Provider>
+        );
+    }
 }
 
 export default App;
