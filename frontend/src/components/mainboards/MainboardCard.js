@@ -14,7 +14,7 @@ class MainboardCard extends Component {
                             this,
                             this.props.id
                         )}
-                        variant="primary"
+                        variant="primary" 
                         size="lg"
                         active
                     >

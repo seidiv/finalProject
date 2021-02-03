@@ -31,7 +31,7 @@ class MainboardList extends Component {
             <h1>Loading</h1>
         ) : (
             <Fragment>
-                <SearchBox mainboards={this.props.mainboards} />
+                <SearchBox objectList={this.props.mainboards} />
 
                 <Scroll className="tc">
                     <div>

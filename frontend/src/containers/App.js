@@ -15,9 +15,12 @@ import { Provider } from "react-redux";
 import store from "../store/store";
 import PrivateRoute from "../components/common/PrivateRoute";
 import Login from "../components/accounts/Login";
+import Table from "../components/charts/Table";
 import RegisterMainboard from "../components/accounts/RegisterMainboard";
 import { loadUser } from "../store/actions/auth";
 import SensorList from "../components/sensors/SensorList";
+import RegisterSensorType from "../components/accounts/RegisterSensorType";
+import SensorTypeList from "../components/sensors/SensorTypeList";
 // Alert options
 const alertOptions = {
     timeout: 3000,
@@ -37,21 +40,36 @@ class App extends Component {
                             <Header />
                             <Alerts />
                             <Switch>
-                                <Route
+                                <PrivateRoute
                                     exact
                                     path="/"
                                     component={MainboardList}
                                 />
-                                <Route
+                                <PrivateRoute
                                     exact
-                                    path="/register"
+                                    path="/register-mainboard"
                                     component={RegisterMainboard}
                                 />
+                                <PrivateRoute
+                                    exact
+                                    path="/register-sensor"
+                                    component={RegisterSensorType}
+                                />
                                 <Route exact path="/login" component={Login} />
-                                <Route
+                                <PrivateRoute
                                     exact
                                     path="/sensors"
                                     component={SensorList}
+                                />
+                                <PrivateRoute
+                                    exact
+                                    path="/typesensors"
+                                    component={SensorTypeList}
+                                />
+                                <PrivateRoute
+                                    exact
+                                    path="/charts"
+                                    component={Table}
                                 />
                             </Switch>
                         </div>

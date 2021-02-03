@@ -12,6 +12,7 @@ export default function (state = initialState, action) {
                 ...state,
                 sensorTypes: action.payload,
             };
+        
 
         default:
             return state;

@@ -9,12 +9,7 @@ import Scroll from "../layout/scroll";
 import relatedSensors from "../../store/reducers/relatedSensors";
 
 class SensorList extends Component {
-    //     constructor() {
-    //     super()
-    //     this.state = {
-    //         filteredObjects = [],
-    //     }
-    //   }
+
     static propTypes = {
         filteredSensors: propTypes.array.isRequired,
         relatedSensors: propTypes.array.isRequired,
@@ -25,7 +20,7 @@ class SensorList extends Component {
         this.props.getRelatedSensors();
         this.props.getSensorTypes();
     }
-    
+
     render() {
         let {
             filteredSensors,
@@ -52,6 +47,7 @@ class SensorList extends Component {
                                     id={rs.id}
                                     description={rs.description}
                                     type_id={rs.type_id}
+                                    relatedMainboard={relatedMainboard}
                                     sensorTypes={sensorTypes}
                                 />
                             );

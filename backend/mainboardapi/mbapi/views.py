@@ -14,13 +14,13 @@ User = get_user_model()
 
 
 class RegisterSensor(generics.ListCreateAPIView):
-    # permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
     queryset = Sensors.objects.all()
     serializer_class = SensorTypeSerializer
 
 
 class PutSensorValue(generics.ListCreateAPIView):
-    # permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
     queryset = SensorValue.objects.all()
     serializer_class = SensorValueSerializer
 # register a main board which is related to the user you just created
@@ -28,7 +28,7 @@ class PutSensorValue(generics.ListCreateAPIView):
 
 
 class RegisterMainboardAPI(generics.GenericAPIView):
-    # permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
     serializer_class = MainBoardSerializer
 
     def post(self, request, *args, **kwargs):
@@ -44,26 +44,26 @@ class RegisterMainboardAPI(generics.GenericAPIView):
 
 
 class MainboardList(generics.ListAPIView):
-    # permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
 
     queryset = MainBoard.objects.all()
     serializer_class = MainBoardSerializer
 
 
 class RegisterSensorType(generics.ListCreateAPIView):
-    # permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
     queryset = SensorType.objects.all()
     serializer_class = SensorTypeSerializer
 
 
 class SensorTypeList(generics.ListAPIView):
-    # permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
     queryset = SensorType.objects.all()
     serializer_class = SensorTypeSerializer
 
 
 class GetSensorList(generics.ListAPIView):
-    # permission_classes = [permissions.IsAuthenticated, permissions.IsAdminUser]
+    permission_classes = [permissions.IsAuthenticated, permissions.IsAdminUser]
     queryset = Sensors.objects.all()
     serializer_class = SensorsSerializer
     filter_backends = [DjangoFilterBackend]
@@ -71,7 +71,7 @@ class GetSensorList(generics.ListAPIView):
 
 
 class GetSensorValues(generics.ListAPIView):
-    # permission_classes = [permissions.IsAuthenticated, permissions.IsAdminUser]
+    permission_classes = [permissions.IsAuthenticated, permissions.IsAdminUser]
     queryset = SensorValue.objects.all()
     serializer_class = SensorValueSerializer
 

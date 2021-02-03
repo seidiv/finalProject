@@ -4,9 +4,10 @@ import mainboards from "./mainboards";
 import errors from "./errors";
 import messages from "./messages";
 import { searchObjects } from "./search";
-import auth from "./auth"; 
+import auth from "./auth";
 import relatedSensors from "./relatedSensors";
 import sensorTypes from "./sensorTypes";
+import sensorValueItem from "./sensorValueItem";
 
 export default combineReducers({
     mainboards,
@@ -16,4 +17,5 @@ export default combineReducers({
     auth,
     relatedSensors,
     sensorTypes,
+    sensorValueItem,
 });

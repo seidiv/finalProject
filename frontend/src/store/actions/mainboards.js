@@ -1,25 +1,24 @@
-import axios from 'axios';
-
-import { GET_ERRORS, GET_MAINBOARDS_LIST } from './types';
+import axios from "axios";
+import { tokenConfig } from "./auth";
+import { createMessage } from "./messages";
+import { GET_ERRORS, GET_MAINBOARDS_LIST } from "./types";
 
 // GET MAINBOARD LIST
 
-export const getMainboards = () => dispatch => {
-    axios.get('http://localhost:8000/api/mainboard/list')
-        .then(res => {
+export const getMainboards = () => (dispatch, getState) => {
+    axios
+        .get("http://localhost:8000/api/mainboard/list", tokenConfig(getState))
+        .then((res) => {
             dispatch({
                 type: GET_MAINBOARDS_LIST,
-                payload: res.data
+                payload: res.data,
             });
-        }).catch(err => {
-            console.log(err);
-            // const errors = {
-            //     msg: err.response.data,
-            //     status: err.response.status
-            // }
-            // dispatch({
-            //     type:GET_ERRORS,
-            //     payload: errors
-            // });
+        })
+        .catch((err) => {
+            dispatch(
+                createMessage({
+                    somethingWentWrong: "something went wrong. refresh !",
+                })
+            );
         });
 };

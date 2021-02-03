@@ -9,7 +9,7 @@ User = get_user_model()
 
 
 class RegisterMainboardUserAPI(generics.GenericAPIView):
-    # permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
     serializer_class = RegisterMainboardSerializer
 
     def post(self, request, *args, **kwargs):
@@ -46,7 +46,7 @@ class LoginAPI(generics.GenericAPIView):
 
 
 class UserAPI(generics.RetrieveAPIView):
-    # permission_classes = [permissions.IsAuthenticated, permissions.IsAdminUser]
+    permission_classes = [permissions.IsAuthenticated, permissions.IsAdminUser]
     serializer_class = UserSerializer
 
     def get_object(self):
