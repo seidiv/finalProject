@@ -14,9 +14,9 @@ User = get_user_model()
 
 
 class RegisterSensor(generics.ListCreateAPIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticated]
     queryset = Sensors.objects.all()
-    serializer_class = SensorTypeSerializer
+    serializer_class = SensorsSerializer
 
 
 class PutSensorValue(generics.ListCreateAPIView):

@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { Button } from "react-bootstrap";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import {getRelatedSensors} from "../../store/actions/relatedSensors";
+import {
+    getRelatedSensors,
+    saveMainboardID,
+} from "../../store/actions/relatedSensors";
 
 class MainboardCard extends Component {
     render() {
@@ -14,11 +17,25 @@ class MainboardCard extends Component {
                             this,
                             this.props.id
                         )}
-                        variant="primary" 
+                        variant="primary"
+                        size="lg"
+                        active
+                        className="ma2"
+                    >
+                        Related Sensors
+                    </Button>
+                </Link>
+                <Link to="/register-sensor">
+                    <Button
+                        onClick={this.props.saveMainboardID.bind(
+                            this,
+                            this.props.id
+                        )}
+                        variant="primary"
                         size="lg"
                         active
                     >
-                        Related Sensors
+                        Register Sensor
                     </Button>
                 </Link>
                 <br />
@@ -42,4 +59,7 @@ const mapStateToProps = (state) => ({
     mainboards: state.mainboards.mainboards,
 });
 
-export default connect(mapStateToProps,{ getRelatedSensors })(MainboardCard);
+export default connect(mapStateToProps, {
+    getRelatedSensors,
+    saveMainboardID,
+})(MainboardCard);

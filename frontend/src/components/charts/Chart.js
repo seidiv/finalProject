@@ -56,6 +56,15 @@ class Chart extends Component {
             sensorValues[i] = this.state.values[i].value;
             labelValues[i] = this.state.values[i].time_stamp.toString();
         }
+        if (sensorValues.length > 100) {
+            labelValues = labelValues.slice(
+                Math.max(labelValues.length - 99, 1)
+            );
+            sensorValues = sensorValues.slice(
+                Math.max(sensorValues.length - 99, 1)
+            );
+        }
+
         // console.log(this.props.values);
         // console.log(`lables ${labelValues}`);
         // console.log(`sensorValues ${sensorValues}`);

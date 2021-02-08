@@ -154,7 +154,9 @@ STATIC_URL = '/static/'
 # after run build this folder will be created
 
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000'
+    'http://localhost:3000',
+    'http://localhost:80',
+    'http://localhost',
 ]
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR.parent.parent, 'frontend/build/static/'),

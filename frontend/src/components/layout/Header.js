@@ -52,7 +52,7 @@ class Header extends Component {
                     </li>
                     <li className="nav-item">
                         <Link
-                            to="/register-sensor"
+                            to="/register-sensor-type"
                             className="f4 br3 pa3 ma2 fw6 db bg-lightest-blue link hover-gray nav-link"
                         >
                             Register Sensor

@@ -57,7 +57,7 @@ class RegisterSensorType extends Component {
                     </div>
                 </div>
             </div>
-        );
+        ); 
     }
 }
 

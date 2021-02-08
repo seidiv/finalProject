@@ -19,11 +19,6 @@ export const registerSensorType = (description) => (dispatch, getState) => {
                     sensorRegistered: "New sensor type registered!",
                 })
             );
-
-            dispatch({
-                type: REGISTER_SENSOR_TYPE,
-                payload: res.data,
-            });
         })
         .catch((err) => {
             const errors = {
@@ -39,9 +34,12 @@ export const registerSensorType = (description) => (dispatch, getState) => {
             });
         });
 };
-export const getSensorTypes = () => (dispatch,getState) => {
+export const getSensorTypes = () => (dispatch, getState) => {
     axios
-        .get("http://localhost:8000/api/sensors/registersensortypeslist" , tokenConfig(getState))
+        .get(
+            "http://localhost:8000/api/sensors/registersensortypeslist",
+            tokenConfig(getState)
+        )
         .then((res) => {
             // console.log(`this is ${id}`);
             dispatch({

@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import Header from "../components/layout/Header";
 import Alerts from "../components/layout/Alerts";
 import MainboardList from "../components/mainboards/MainboardList";
+import RegisterNewSensor from "../components/mainboards/RegisterNewSensor";
 import { Provider as AlertProvider } from "react-alert";
 import {
     HashRouter as Router,
@@ -52,8 +53,13 @@ class App extends Component {
                                 />
                                 <PrivateRoute
                                     exact
-                                    path="/register-sensor"
+                                    path="/register-sensor-type"
                                     component={RegisterSensorType}
+                                />
+                                <PrivateRoute
+                                    exact
+                                    path="/register-sensor"
+                                    component={RegisterNewSensor}
                                 />
                                 <Route exact path="/login" component={Login} />
                                 <PrivateRoute
@@ -66,11 +72,7 @@ class App extends Component {
                                     path="/typesensors"
                                     component={SensorTypeList}
                                 />
-                                <PrivateRoute
-                                    exact
-                                    path="/charts"
-                                    component={Table}
-                                />
+                                <PrivateRoute exact path="/charts" component={Table} />
                             </Switch>
                         </div>
                     </Router>

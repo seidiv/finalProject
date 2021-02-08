@@ -135,17 +135,17 @@ class RegisterMainboard extends Component {
                                     Register
                                 </button>
                             </div>
-                            <p>
-                                Already have an account?{" "}
-                                <Link to="/login">Login</Link>
-                            </p>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
                         </form>
                     </div>
                 </div>
             </div>
         );
     }
-}
+}   
 
 const mapStateToProps = (state) => ({
     isAuthenticated: state.auth.isAuthenticated,
