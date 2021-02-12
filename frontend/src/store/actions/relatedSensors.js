@@ -1,7 +1,7 @@
 import axios from "axios";
 import { tokenConfig } from "./auth";
 import { returnErrors, createMessage } from "./messages";
-
+import { host } from "./host";
 import { SAVE_MAINBOARD_ID, GET_RELATED_SENSORS, GET_ERRORS } from "./types";
 
 // GET MAINBOARD LIST
@@ -10,7 +10,7 @@ export const getRelatedSensors = (id) => (dispatch, getState) => {
     if (id !== undefined) {
         axios
             .get(
-                `http://localhost:8000/api/sensors/list?mainboard_id=${id}`,
+                `${host}/api/sensors/list?mainboard_id=${id}`,
                 tokenConfig(getState)
             )
             .then((res) => {
@@ -41,11 +41,7 @@ export const registerNewSensor = ({ type_id, mainboard_id, description }) => (
     const body = JSON.stringify({ type_id, mainboard_id, description });
 
     axios
-        .post(
-            "http://localhost:8000/api/sensors/registersensor",
-            body,
-            tokenConfig(getState)
-        )
+        .post(host + "/api/sensors/registersensor", body, tokenConfig(getState))
         .then((res) => {
             dispatch(
                 createMessage({

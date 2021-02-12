@@ -1,3 +1,4 @@
+import { host } from "./host";
 import axios from "axios";
 import { returnErrors, createMessage } from "./messages";
 import {
@@ -17,7 +18,7 @@ export const loadUser = () => (dispatch, getState) => {
     dispatch({ type: USER_LOADING });
 
     axios
-        .get("http://localhost:8000/api/auth/user", tokenConfig(getState))
+        .get(host + "/api/auth/user", tokenConfig(getState))
         .then((res) => {
             // console.log("it really did");
             dispatch({
@@ -47,9 +48,12 @@ export const login = (username, password) => (dispatch) => {
     const body = JSON.stringify({ username, password });
 
     axios
-        .post("http://localhost:8000/api/auth/login", body, config)
+        .post(host + "/api/auth/login", body, config)
         .then((res) => {
-            if (res.data.user.is_mainboard == true && res.data.user.is_staff == false) {
+            if (
+                res.data.user.is_mainboard == true &&
+                res.data.user.is_staff == false
+            ) {
                 dispatch(
                     createMessage({
                         mainboardNotAllowed: "mainboards are not allowed !",
@@ -74,11 +78,7 @@ export const login = (username, password) => (dispatch) => {
 // LOGOUT USER
 export const logout = () => (dispatch, getState) => {
     axios
-        .post(
-            "http://localhost:8000/api/auth/logout/",
-            null,
-            tokenConfig(getState)
-        )
+        .post(host + "/api/auth/logout/", null, tokenConfig(getState))
         .then((res) => {
             // dispatch({ type: "CLEAR_LEADS" });
             dispatch({
@@ -104,17 +104,13 @@ export const registerMainboard = ({
     const body = JSON.stringify({ username, email, password });
 
     axios
-        .post(
-            "http://localhost:8000/api/auth/register",
-            body,
-            tokenConfig(getState)
-        )
+        .post(host + "/api/auth/register", body, tokenConfig(getState))
         .then((res) => {
             const mainboard_user = res.data.user.id;
             console.log(mainboard_user);
             const mBody = JSON.stringify({ mainboard_user, description });
             axios.post(
-                "http://localhost:8000/api/mainboard/register",
+                host + "/api/mainboard/register",
                 mBody,
                 tokenConfig(getState)
             );

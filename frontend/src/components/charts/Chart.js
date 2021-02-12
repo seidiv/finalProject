@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Bar, Line, Pie } from "react-chartjs-2";
 import { connect } from "react-redux";
 import axios from "axios";
-
+import { host } from "../../store/actions/host";
 class Chart extends Component {
     constructor(props) {
         super(props);
@@ -40,7 +40,7 @@ class Chart extends Component {
     componentWillMount() {
         axios
             .get(
-                `http://localhost:8000/api/sensors/value?mainboard_id=${this.props.mainboard_id}&sensor_id=${this.props.sensor_id}`,
+                `${host}/api/sensors/value?mainboard_id=${this.props.mainboard_id}&sensor_id=${this.props.sensor_id}`,
                 this.tokenConfig()
             )
             .then((res) => {

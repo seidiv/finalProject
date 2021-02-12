@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import { GET_ERRORS, GET_SENSOR_TYPES, REGISTER_SENSOR_TYPE } from "./types";
-
+import { host } from "./host";
 import { createMessage, returnErrors } from "./messages";
 import { tokenConfig } from "./auth";
 // GET MAINBOARD LIST
@@ -9,7 +9,7 @@ import { tokenConfig } from "./auth";
 export const registerSensorType = (description) => (dispatch, getState) => {
     axios
         .post(
-            "http://localhost:8000/api/sensors/registersensortypes",
+            host + "/api/sensors/registersensortypes",
             description,
             tokenConfig(getState)
         )
@@ -37,7 +37,7 @@ export const registerSensorType = (description) => (dispatch, getState) => {
 export const getSensorTypes = () => (dispatch, getState) => {
     axios
         .get(
-            "http://localhost:8000/api/sensors/registersensortypeslist",
+            host+"/api/sensors/registersensortypeslist",
             tokenConfig(getState)
         )
         .then((res) => {
