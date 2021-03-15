@@ -19,7 +19,7 @@ class RegisterSensor(generics.ListCreateAPIView):
     serializer_class = SensorsSerializer
 
 
-class PutSensorValue(generics.ListCreateAPIView):
+class PutSensorValue(generics.CreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
     queryset = SensorValue.objects.all()
     serializer_class = SensorValueSerializer
